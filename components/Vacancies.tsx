@@ -4,7 +4,7 @@ export default function Vacancies() {
   const vacancies = [
     {
       title: "Працівник на внутрішню обробку",
-      salary: "€2500-3000",
+      salary: "відрядна, від виробітку",
       location: "Магдебург",
       conditions: "Проживання та харчування включено",
     }

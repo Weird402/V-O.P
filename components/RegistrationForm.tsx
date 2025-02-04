@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import emailjs from "@emailjs/browser"
 
 export default function RegistrationForm() {
   const [formData, setFormData] = useState({
@@ -19,8 +20,38 @@ export default function RegistrationForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log(formData)
-    alert("Дякуємо за заявку! Наш менеджер зв'яжеться з вами протягом 24 годин.")
+
+    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!
+    const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!
+    const userID = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+           // Замініть на свій Public Key (User ID)
+
+    // Параметри, які передаються у шаблон EmailJS
+    const templateParams = {
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      experience: formData.experience,
+      desiredPosition: formData.desiredPosition,
+    }
+
+    emailjs.send(serviceID, templateID, templateParams, userID)
+      .then((response) => {
+        console.log("Email sent successfully!", response.status, response.text)
+        alert("Дякуємо за заявку! Наш менеджер зв'яжеться з вами протягом 24 годин.")
+        // Можна також скинути форму після успішної відправки
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          experience: "",
+          desiredPosition: "",
+        })
+      })
+      .catch((error) => {
+        console.error("Email send failed:", error)
+        alert("Виникла помилка при надсиланні заявки. Будь ласка, спробуйте пізніше.")
+      })
   }
 
   return (

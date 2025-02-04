@@ -8,7 +8,7 @@ export default function AboutCompany() {
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2 mb-8 md:mb-0">
             <p className="text-lg mb-4">
-              Ми працюємо з 2010 року, допомогли 5000+ працівникам знайти роботу в Європі. Наша компанія співпрацює з
+              Наша компанія співпрацює з
               провідними німецькими будівельними компаніями, забезпечуючи стабільну та легальну зайнятість для наших
               клієнтів.
             </p>

@@ -35,7 +35,7 @@ export default function Contacts() {
                 LinkedIn
               </a> */}
               <a
-                href="https://www.facebook.com/vopconstruction"
+                href="https://www.facebook.com/profile.php?id=61572452412690"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:underline"
